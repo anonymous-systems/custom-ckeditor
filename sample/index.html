@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor 5 – custom build</title>
+    <style>
+        body {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Anonymous Systems CKEditor5 Balloon Block</h1>
+
+<div class="editor">
+
+</div>
+
+
+<script src="../build/ckeditor.js"></script>
+<script src="../node_modules/@ckeditor/ckeditor5-inspector/build/inspector.js"></script>
+<script>
+    CKEDITOR.CustomBalloonEditor
+        .create( document.querySelector( '.editor' ), {
+            title: { placeholder: 'Title' },
+            placeholder: 'Tell your story...',
+        } )
+        .then(editor => {
+            window.editor = editor;
+            CKEditorInspector.attach(editor);
+        })
+        .catch( err => {
+            console.error( err.stack );
+        } );
+</script>
+
+</body>
+</html>
